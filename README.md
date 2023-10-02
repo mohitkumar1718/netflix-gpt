@@ -4,17 +4,16 @@
 
 # FEATURES
 - Login/ sign up page
- - Sign in /sign up page
- - Redirect to browse page
+   - Sign in /sign up page
+   - Redirect to browse page
 
- 
 - Browse (after authentication)
- - Header
- - Main Movie
-  - Trailer in Background
-  - Title & Description
-  - Movie Suggestions
-    - Movie suggestions
+    - Header
+       - Main Movie
+       - Trailer in Background
+       - Title & Description
+    - Movie Suggestions
+       -  Movie suggestions
 
 
 -Netflix gpt
