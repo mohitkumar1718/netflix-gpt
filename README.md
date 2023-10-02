@@ -7,7 +7,7 @@
  - Sign in /sign up page
  - Redirect to browse page
 
-
+ 
 - Browse (after authentication)
  - Header
  - Main Movie
