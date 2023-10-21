@@ -7,10 +7,11 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^10.5.0",
-    "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -31,13 +32,15 @@
       "not op_mini all"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "last 10 chrome version",
+      "last 10 firefox version",
+      "last 10 safari version"
     ]
   },
   "devDependencies": {
-    "react-router-dom": "^6.16.0",
+    "react": "^18.2.0",
+    "react-router-dom": "^6.17.0",
+    "router-dom": "^2.2.11",
     "tailwindcss": "^3.3.3"
   }
 }
