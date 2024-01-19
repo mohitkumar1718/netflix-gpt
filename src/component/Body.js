@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useEffect } from "react";
 import Login from "./Login";
 import { Browse } from "./Browse";
@@ -26,8 +24,15 @@ const Body = () => {
 	useEffect(() => {
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
-				const { uid, email, displayName } = user;
-				dispatch(addUser({email: email ,uid: uid, displayName:displayName}));
+				const { uid, email, displayName, photoURL } = user;
+				dispatch(
+					addUser({
+						email: email,
+						uid: uid,
+						displayName: displayName,
+						photoURL: photoURL,
+					}),
+				);
 			} else {
 				dispatch(removeUser());
 			}
