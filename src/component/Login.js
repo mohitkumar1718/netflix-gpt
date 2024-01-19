@@ -6,13 +6,13 @@ import {
 	signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
+
 import { updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
 const Login = () => {
-	const nevigate = useNavigate();
+	
 	const dispatch = useDispatch();
 	const [errorMessege, setErrorMessege] = useState(null);
 	const [isSignIN, setIsSignIN] = useState(true);
@@ -56,14 +56,14 @@ const Login = () => {
 									photoURL: photoURL,
 								}),
 							);
-							nevigate("/browse");
+							
 						})
 						.catch((error) => {
 							// An error occurred
 							// ...
 						});
 					console.log(user);
-					nevigate("/browse");
+					
 				})
 				.catch((error) => {
 					const errorCode = error.code;
@@ -81,7 +81,7 @@ const Login = () => {
 					// Signed in
 					const user = userCredential.user;
 					console.log(user);
-					nevigate("/browse");
+				
 				})
 				.catch((error) => {
 					const errorCode = error.code;
