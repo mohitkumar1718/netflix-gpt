@@ -6,7 +6,7 @@ import { Browse } from "./Browse";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 import { auth } from "../utils/firebase";
-import { addUser, removeUser } from "../utils/slice";
+import { addUser, removeUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 const Body = () => {
