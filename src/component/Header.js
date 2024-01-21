@@ -4,6 +4,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
+import { LOGO } from "../utils/constant";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ export const Header = () => {
 	const user = useSelector((store) => store.user);
 
   useEffect(() => {
-		onAuthStateChanged(auth, (user) => {
+		const unsubscribe= onAuthStateChanged(auth, (user) => {
 			if (user) {
 				const { uid, email, displayName, photoURL } = user;
 				dispatch(
@@ -29,6 +30,7 @@ export const Header = () => {
         nevigate("/")
 			}
 		});
+		return ()=>unsubscribe();
 	}, []);
 
 	const signOutbtn = () => {
@@ -43,7 +45,7 @@ export const Header = () => {
 		<div className='absolute w-full bg-gradient-to-b from-black flex justify-between z-40'>
 			<img
 				className=' w-48 mx-2 '
-				src='https://www.freepnglogos.com/uploads/netflix-logo-text-emblem-31.png'
+				src= {LOGO} 
 				alt='Netflix'
 			/>
 			{user && (
