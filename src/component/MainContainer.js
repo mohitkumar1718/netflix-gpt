@@ -8,6 +8,7 @@ const MainContainer = () => {
     if(movies===null)return;
     const mainMovie=movies[0];
     const {id}=mainMovie;
+    
   
   return (
     <div>
