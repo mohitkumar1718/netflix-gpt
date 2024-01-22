@@ -42,7 +42,7 @@ export const Header = () => {
 			});
 	};
 	return (
-		<div className='absolute w-full bg-gradient-to-b from-black flex justify-between z-40 px-10'>
+		<div className='absolute w-full bg-gradient-to-b from-black flex justify-between z-30 px-10'>
 			<img
 				className=' w-48 mx-2 '
 				src= {LOGO} 

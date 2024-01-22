@@ -4,7 +4,7 @@ export const VideoTitle = (movie) => {
     const {original_title, overview}=movie.movie;
    
   return (
-    <div className='absolute w-full aspect-video pt-72 pl-20 px-10 bg-gradient-to-r from-black text-white'>
+    <div className='absolute w-full aspect-video pt-60 pl-20 px-10 bg-gradient-to-r from-black  text-white'>
         <h1 className='text-6xl font-bold mb-4 w-1/2'>{original_title}</h1>
         <p className='w-2/5 '>{overview}</p>
         <div className='mt-4'>
