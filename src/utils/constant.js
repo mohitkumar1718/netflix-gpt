@@ -8,4 +8,5 @@ export const API_OPTIONS= {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MDAxN2NhNjQxMTZlZTk0NmJkMjc1NDI1NWE5YWE3OSIsInN1YiI6IjY1YWNmMzcyYWQ1OWI1MDBhYzgyNGRlYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.amNlg6ZpzUFwXPaEqFQPkqoRSUkI_OMAsj4OLfW11ro'
     }
   };
-  
+ 
+  export const IMG_URL_CDN="https://media.themoviedb.org/t/p/w220_and_h330_face"

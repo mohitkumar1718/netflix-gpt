@@ -8,7 +8,7 @@ export const Browse = () => {
     useNowPlayingMovies();
 
 	return (
-		<div className="bg-slate-500 h-full">
+		<div className="bg-black h-full">
 			<Header />
 			<MainContainer/>
 			<SecondaryContainer/>
