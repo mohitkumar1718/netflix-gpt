@@ -5,6 +5,8 @@ import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { LOGO } from "../utils/constant";
+import { toggleGptSearchView } from "../utils/gptSlice";
+import { languageOptions } from "../utils/constant";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -33,6 +35,10 @@ export const Header = () => {
 		return ()=>unsubscribe();
 	}, []);
 
+	const handleGptSearchState=()=>{
+		dispatch(toggleGptSearchView());
+	}
+
 	const signOutbtn = () => {
 		signOut(auth)
 			.then(() => {
@@ -41,17 +47,29 @@ export const Header = () => {
 				// An error happened.
 			});
 	};
+
+    const handleLanguageChange=(e)=>{
+		console.log(e.target.value);
+	}
+
 	return (
 		<div className='absolute w-full bg-gradient-to-b from-black flex justify-between z-30 px-10'>
+		   
 			<img
 				className=' w-48 mx-2 '
 				src= {LOGO} 
 				alt='Netflix'
 			/>
 			{user && (
-				<div className='flex p-2'>
+				<div className='flex '>
+				<select onChange={handleLanguageChange} className="h-10 p-2 mt-9 mr-3 rounded-lg bg-slate-500 bg-opacity-90" name="language" id="">
+				   {languageOptions.map((lang)=><option  key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
+					
+
+				</select>
+				<button onClick={handleGptSearchState} className=" h-10 p-2 mt-9 mr-8 bg-purple-700 rounded-lg">Gpt Search</button>
 					<img
-						className='h-14 my-6 rounded-lg'
+						className='h-12 mt-8 rounded-lg'
 						src={user?.photoURL}
 						alt='img'
 					/>

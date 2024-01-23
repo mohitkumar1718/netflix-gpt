@@ -10,3 +10,9 @@ export const API_OPTIONS= {
   };
  
   export const IMG_URL_CDN="https://media.themoviedb.org/t/p/w220_and_h330_face"
+  export const BG_URL='https://assets.nflxext.com/ffe/siteui/vlv3/9db4a880-3034-4e98-bdea-5d983e86bf52/b5953637-091d-4e02-9754-2bfadc8a8f7c/IN-en-20230925-popsignuptwoweeks-perspective_alpha_website_large.jpg'
+  export const languageOptions=[
+    {identifier:"en",name:"English"},
+    {identifier:"hindi",name:"Hindi"},
+    {identifier:"spanish",name:"Spanish"},
+]
