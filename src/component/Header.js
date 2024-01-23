@@ -7,12 +7,13 @@ import { addUser, removeUser } from "../utils/userSlice";
 import { LOGO } from "../utils/constant";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { languageOptions } from "../utils/constant";
+import { changeLanguage } from "../utils/configSlice";
 
 export const Header = () => {
   const dispatch = useDispatch();
-	const nevigate = useNavigate();
-  
-	const user = useSelector((store) => store.user);
+  const nevigate = useNavigate();
+  const user = useSelector((store) => store.user);
+  const showGptSearch=useSelector(store=>store.gpt.showGptSearchView);
 
   useEffect(() => {
 		const unsubscribe= onAuthStateChanged(auth, (user) => {
@@ -49,7 +50,7 @@ export const Header = () => {
 	};
 
     const handleLanguageChange=(e)=>{
-		console.log(e.target.value);
+		dispatch(changeLanguage(e.target.value));
 	}
 
 	return (
@@ -62,12 +63,12 @@ export const Header = () => {
 			/>
 			{user && (
 				<div className='flex '>
-				<select onChange={handleLanguageChange} className="h-10 p-2 mt-9 mr-3 rounded-lg bg-slate-500 bg-opacity-90" name="language" id="">
+				{ showGptSearch && <select onChange={handleLanguageChange} className="h-10 p-2 mt-9 mr-3 rounded-lg bg-slate-500 bg-opacity-90" name="language" id="">
 				   {languageOptions.map((lang)=><option  key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
 					
 
-				</select>
-				<button onClick={handleGptSearchState} className=" h-10 p-2 mt-9 mr-8 bg-purple-700 rounded-lg">Gpt Search</button>
+				</select>}
+				<button onClick={handleGptSearchState} className=" h-10 p-2 mt-9 mr-8 bg-purple-700 rounded-lg">{showGptSearch? "HomePage" :"Gpt Search"}</button>
 					<img
 						className='h-12 mt-8 rounded-lg'
 						src={user?.photoURL}
