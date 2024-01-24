@@ -5,10 +5,10 @@ import { BG_URL } from '../utils/constant'
 
 export const GptSearch = () => {
   return (
-    
-        <div className=' w-full h-full'>
-        <img className='w-full h-full absolute -z-10' src={BG_URL} alt="" />
-        <div className='  w-full pt-[10%] absolute '>
+        
+        <div className=''>
+        <img className=' h-full object-cover md:h-fit  md:w-full fixed -z-10' src={BG_URL} alt="" />
+        <div className=' pt-[40%] w-full md:pt-[10%] absolute '>
         <GptSearchBar/>
         <GptSearchResult/>
         </div>

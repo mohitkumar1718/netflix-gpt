@@ -54,30 +54,30 @@ export const Header = () => {
 	}
 
 	return (
-		<div className='absolute w-full bg-gradient-to-b from-black flex justify-between z-30 px-10'>
+		<div className='absolute w-full bg-gradient-to-b from-black flex flex-col md:flex-row md:justify-between z-30 px-10'>
 		   
 			<img
-				className=' w-48 mx-2 '
+				className=' w-32 md:w-44 mx-auto md:mx-2 '
 				src= {LOGO} 
 				alt='Netflix'
 			/>
 			{user && (
-				<div className='flex '>
-				{ showGptSearch && <select onChange={handleLanguageChange} className="h-10 p-2 mt-9 mr-3 rounded-lg bg-slate-500 bg-opacity-90" name="language" id="">
+				<div className='flex -mt-4 md:mt-0 justify-between md:justify-normal'>
+				{ showGptSearch && <select onChange={handleLanguageChange} className="h-10 p-2 mt-2 md:mt-9 mr-3 rounded-lg bg-slate-500 bg-opacity-90" name="language" id="">
 				   {languageOptions.map((lang)=><option  key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
 					
 
 				</select>}
-				<button onClick={handleGptSearchState} className=" h-10 p-2 mt-9 mr-8 bg-purple-700 rounded-lg">{showGptSearch? "HomePage" :"Gpt Search"}</button>
+				<button onClick={handleGptSearchState} className="h-10 p-2 mt-2 md:mt-9 mr-8 bg-purple-700 rounded-lg">{showGptSearch? "HomePage" :"Gpt Search"}</button>
 					<img
-						className='h-12 mt-8 rounded-lg'
+						className='h-12 mt-2 hidden md:inline-block md:mt-9 rounded-lg'
 						src={user?.photoURL}
 						alt='img'
 					/>
 					<button
 						onClick={signOutbtn}
-						className='bg-red-600 p-2 font-bold text-white h-10 my-9 rounded-lg mx-2'>
-						Sign out
+						className='bg-red-600 p-2  text-white h-10 mt-2 md:mt-9 rounded-lg mx-2'>
+						{'SignOut'}
 					</button>
 				</div>
 			)}

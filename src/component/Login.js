@@ -94,9 +94,9 @@ const Login = () => {
 	return (
 		<div>
 			<Header />
-			<img className='absolute' src={BG_URL} alt=''
+			<img className='absolute h-full object-cover sm:w-full' src={BG_URL} alt=''
 			/>
-			<div className='absolute my-44 mx-auto right-0 left-0 w-3/12 p-8 bg-black bg-opacity-80 rounded-md'>
+			<div className='absolute my-44 mx-auto right-0 left-0 w-4/5 sm:w-3/5 md:w-2/5 lg:w-96 p-8 bg-black bg-opacity-80 rounded-md'>
 				<form onSubmit={(e) => e.preventDefault()} className='px-5 py-7 '>
 					<h1 className='text-white text-3xl my-3'>
 						{isSignIN ? "Sign In" : "Sign Up"}
