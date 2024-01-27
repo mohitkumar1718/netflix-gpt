@@ -75,7 +75,7 @@ export const Header = () => {
                 
 				</select>}
 				<button onClick={handleHomepage} className="h-10 p-2 mt-2 md:mt-9 mr-8 whitespace-nowrap bg-purple-700 rounded-lg">Home Page</button>
-				{  <button onClick={handleGptSearchState} className="h-10 p-2 mt-2 md:mt-9 mr-8 whitespace-nowrap bg-purple-700 rounded-lg">Gpt Search</button>}
+				{!showGptSearch &&  <button onClick={handleGptSearchState} className="h-10 p-2 mt-2 md:mt-9 mr-8 whitespace-nowrap bg-purple-700 rounded-lg">Gpt Search</button>}
 					
 					<img
 						className='h-12 mt-2 hidden md:inline-block md:mt-9 rounded-lg'
