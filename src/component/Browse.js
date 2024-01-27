@@ -17,10 +17,9 @@ export const Browse = () => {
 	return (
 		<div className="bg-black h-full">
 			<Header />
-			{showGptSearchVies?<GptSearch/>: <>
 			<MainContainer/>
 			<SecondaryContainer/>
-			</>}
+		
 			
 		</div>
 	);
