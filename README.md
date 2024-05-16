@@ -17,7 +17,9 @@
  - Bugfix: if the user is not logged in redirect /browse to Login page and vice-versa
  - unsubscribe to the onAuthStateChanged callback 
  - add hardcoded values in constant.js file
- - created account on imdb and ftech data from the api
+ - created account on Imdb and fetch data from the api
+ - created movies slice for nowPlayingMovies 
+ - created a custom hook of nowPlayingMovies 
 
 # FEATURES
 - Login/ sign up page

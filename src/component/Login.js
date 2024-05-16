@@ -8,12 +8,14 @@ import {
 import { auth } from "../utils/firebase";
 
 import { updateProfile } from "firebase/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import { USER_AVATAR } from "../utils/constant";
-
+import { BG_URL, USER_AVATAR } from "../utils/constant";
+import { useNavigate } from "react-router-dom";
+import { Browse } from "./Browse";
 const Login = () => {
-	
+	const userIn=useSelector(store=>store.user);
+	const nevigate=useNavigate();
 	const dispatch = useDispatch();
 	const [errorMessege, setErrorMessege] = useState(null);
 	const [isSignIN, setIsSignIN] = useState(true);
@@ -57,6 +59,7 @@ const Login = () => {
 									photoURL: photoURL,
 								}),
 							);
+							nevigate("/browse");
 							
 						})
 						.catch((error) => {
@@ -73,15 +76,14 @@ const Login = () => {
 					// ..
 				});
 		} else {
-			signInWithEmailAndPassword(
-				auth,
-				email.current.value,
+			signInWithEmailAndPassword(auth,email.current.value,
 				password.current.value,
 			)
 				.then((userCredential) => {
 					// Signed in
 					const user = userCredential.user;
-					console.log(user);
+					// console.log(user);
+					nevigate("/browse");
 				
 				})
 				.catch((error) => {
@@ -91,15 +93,13 @@ const Login = () => {
 				});
 		}
 	};
-	return (
+	return userIn? (<Browse/>): (
 		<div>
+		 {/* if(!userIn){nevigate("/browse")} */}
 			<Header />
-			<img
-				className='absolute'
-				src='https://assets.nflxext.com/ffe/siteui/vlv3/9db4a880-3034-4e98-bdea-5d983e86bf52/b5953637-091d-4e02-9754-2bfadc8a8f7c/IN-en-20230925-popsignuptwoweeks-perspective_alpha_website_large.jpg'
-				alt=''
+			<img className='absolute h-full object-cover sm:w-full' src={BG_URL} alt=''
 			/>
-			<div className='absolute my-44 mx-auto right-0 left-0 w-3/12 p-8 bg-black bg-opacity-80 rounded-md'>
+			<div className='absolute my-44 mx-auto right-0 left-0 w-4/5 sm:w-3/5 md:w-2/5 lg:w-96 p-8 bg-black bg-opacity-80 rounded-md'>
 				<form onSubmit={(e) => e.preventDefault()} className='px-5 py-7 '>
 					<h1 className='text-white text-3xl my-3'>
 						{isSignIN ? "Sign In" : "Sign Up"}
