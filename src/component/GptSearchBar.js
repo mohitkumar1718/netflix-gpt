@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
 import lang from '../utils/languageConstant'
 import { useDispatch, useSelector } from 'react-redux'
-import openai from '../utils/openAi';
-import { API_OPTIONS } from '../utils/constant';
+
+import { API_OPTIONS, url } from '../utils/constant';
 import { addGptMoviesResults } from '../utils/gptSlice';
 
 const GptSearchBar = () => {
@@ -16,20 +16,54 @@ const GptSearchBar = () => {
     }
 
     const handleButtonClick=async ()=>{
+
         
         // console.log(searchText.current.value);
-        const gptQuery="Act as a movies recommendation system and suggest or some movies for query"+ searchText.current.value+ ". only give me 5 movies , common seperated ike the example results give ahead . example result : Gadder , sholay , Don , Golmaal , Koi Mil Gaya"
-        const getResult = await openai.chat.completions.create({
-            messages: [{ role: 'user', content: gptQuery}],
-            model: 'gpt-3.5-turbo',
-          });
-          const gptMovies=getResult.choices[0]?.message?.content.split(",");
+        const gptQuery="Act as a movies recommendation system and suggest or some movies for query"+ searchText.current.value+ ". only give me 5 movies , common separated don't give year just need movie name don,t give any other information other then name like the example results give ahead . example result : Gadder , sholay , Don , Golmaal , Koi Mil Gaya"
+        
+        
+        const options = {
+          method: 'POST',
+          headers: {
+            'x-rapidapi-key': process.env.REACT_APP_RAPID_API_KAY,
+            'x-rapidapi-host': 'openai-api-gpt-3-5-turbo.p.rapidapi.com',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            model: 'mistral-7b',
+            messages: [
+              {
+                role: 'assistant',
+                content: 'Your are good at coding. Your name is Github Copilot.'
+              },
+              {
+                role: 'user',
+                content: gptQuery
+              }
+            ],
+            temperature: 0.5,
+            top_p: 0.95,
+            max_tokens: -1,
+            use_cache: false,
+            stream: false
+          })
+        };
+        
+        
+          const response = await fetch(url, options);
+          const result = await response.json();
+          console.log(result);
+          const gptMovies=result?.choices[0]?.message?.content.split(",");
 
          const promiseArray =gptMovies.map(movie=>searchMovieTMDB(movie));
          // array of promise because searchMovieTMDB is async function
          const tmdbResults= await Promise.all(promiseArray);
         //  console.log(tmdbResults);
          dispatch(addGptMoviesResults({gptMovies:gptMovies,moviesResult:tmdbResults}));
+
+
+
+
     }
   return (
     <div>

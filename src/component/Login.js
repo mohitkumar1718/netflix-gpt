@@ -37,11 +37,7 @@ const Login = () => {
 
 		// form is signup
 		if (!isSignIN) {
-			createUserWithEmailAndPassword(
-				auth,
-				email.current.value,
-				password.current.value,
-			)
+			createUserWithEmailAndPassword(auth,email.current.value,password.current.value,)
 				.then((userCredential) => {
 					// Signed up
 					const user = userCredential.user;

@@ -18,3 +18,4 @@ export const API_OPTIONS= {
 ]
 
 export const OPEN_AI_KEY=process.env.REACT_APP_OPEN_AI_KEY;
+export const url = 'https://openai-api-gpt-3-5-turbo.p.rapidapi.com/api/v1/chat/completions';
